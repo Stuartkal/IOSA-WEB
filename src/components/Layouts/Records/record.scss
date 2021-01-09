@@ -1,0 +1,73 @@
+.records-main {
+	margin: 150px auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 85%;
+}
+
+.btn-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+
+	width: 60%;
+
+	button {
+		outline: none;
+		background: none;
+		border: 1px solid #01482a;
+		width: 60%;
+		height: 50px;
+		margin-bottom: 1rem;
+		color: #01482a;
+		transition: 0.5s ease-in-out;
+	}
+}
+
+.records-main button:hover {
+	cursor: pointer;
+	background: #01482a;
+	color: #e05822;
+}
+
+.table-container {
+	margin: 150px auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 95%;
+
+	table {
+		width: 100%;
+		// background: #01482a;
+	}
+}
+
+.header-row {
+	height: 30px;
+	align-items: center;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+	td {
+		text-align: center;
+	}
+}
+
+.table-record-row {
+	// height: 30px;
+	align-items: center;
+	margin-bottom: 0.2rem;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.1);
+	}
+
+	td {
+		font-size: 14px;
+		text-align: center;
+	}
+}
