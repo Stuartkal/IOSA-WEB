@@ -6,10 +6,13 @@ import * as actionCreators from '../../Store/ActionCreators'
 import './Auth.scss'
 const Auth = (props) => {
 
-    const [state, setState] = useState({
-        username: 'tester',
-        password: 'tester@123'
-    })
+    // const [state, setState] = useState({
+    //     username: 'tester',
+    //     password: 'tester@123'
+    // })
+
+    const [username, setUsername] = useState('tester')
+    const [password, setPassword] = useState('tester@123')
 
     const authenticated = useSelector(state => state.auth.authenticated)
     // console.log(authenticated)
@@ -22,7 +25,7 @@ const Auth = (props) => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        props.login(state.username,state.password)
+        props.login(username,password)
     }
 
     return (
@@ -34,8 +37,8 @@ const Auth = (props) => {
                         <h3>Welcome Back!</h3>
                         <h5>Login to continue</h5>
                     </div>
-                    <input type="text" placeholder="Username" value={state.username} onChange={(e)=> setState({...state, username: e.target.value})}/>
-                    <input type="password" placeholder="Password" value={state.password} onChange={(e)=> setState({...state, password: e.target.value})}/>
+                    <input type="text" placeholder="Username" value={username} onChange={(e)=> setUsername(e.target.value)}/>
+                    <input type="password" placeholder="Password" value={password} onChange={(e)=> setPassword(e.target.value)}/>
                     <button>Login</button>
                 </div>
            </form>
@@ -47,4 +50,4 @@ const mapDispatchToProps = (dispatch) => ({
     login: (username,password) => dispatch(actionCreators.login(username,password))
 })
 
-export default connect(null, mapDispatchToProps) (Auth)
+export default connect(null, mapDispatchToProps)(Auth)
