@@ -1,5 +1,6 @@
 import React from 'react';
-import Routes from './components/Routes/Routes'
+import Routes from './components/Routes/Navigation'
+
 function App() {
   return (
     <div>

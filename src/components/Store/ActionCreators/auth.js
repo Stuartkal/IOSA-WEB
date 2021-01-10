@@ -32,7 +32,7 @@ export const login = (username, password) => {
         
         axios.post('https://iosa-api.herokuapp.com/auth/signin',user, 
         {
-            headers: {"Access-Control-Allow-Origin": "*"}
+            headers: { 'Content-Type': 'application/json' }
         }
         )
         .then(res => {

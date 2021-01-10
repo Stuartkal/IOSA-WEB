@@ -1,17 +1,17 @@
 import React from 'react'
 import {BrowserRouter , Route , Switch} from 'react-router-dom'
-import Auth from '../Layouts/Auth/Auth'
-import Home from '../Layouts/Home/Home'
-import Breeding from '../Layouts/Breeding/Breeding'
-import PopulationRecord from '../Layouts/Population_Record/PopulationRecord'
-import BookKeeping from '../Layouts/Book_Keeping/BookKeeping'
-import Records from '../Layouts/Records/Records'
-import BreedingRecord from '../Layouts/Records/BreedingRecords'
-import PopulationRecords from '../Layouts/Records/PopulationRecords'
-import BookkeepingRecords from '../Layouts/Records/BookkeepingRecords'
-import Medication from '../Layouts/Medication/Medication'
+import Auth from '../../Layouts/Auth/Auth'
+import Home from '../../Layouts/Home/Home'
+import Breeding from '../../Layouts/Breeding/Breeding'
+import PopulationRecord from '../../Layouts/Population_Record/PopulationRecord'
+import BookKeeping from '../../Layouts/Book_Keeping/BookKeeping'
+import Records from '../../Layouts/Records/Records'
+import BreedingRecord from '../../Layouts/Records/BreedingRecords'
+import PopulationRecords from '../../Layouts/Records/PopulationRecords'
+import BookkeepingRecords from '../../Layouts/Records/BookkeepingRecords'
+import Medication from '../../Layouts/Medication/Medication'
 
-const Routes = () => {
+const index = () => {
     return (
         <BrowserRouter>
             <Switch>
@@ -30,4 +30,4 @@ const Routes = () => {
     )
 }
 
-export default Routes
+export default index
