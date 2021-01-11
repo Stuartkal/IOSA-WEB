@@ -57,7 +57,7 @@ export const addBreed = (
             nextBreedingDate: moment(new Date(weaningDate).setDate(new Date(weaningDate).getDate()+ 7)).format('DD-MM-YYYY'),
         }
 
-        axios.post('http://localhost:8080/breeds/breeding', data,{
+        axios.post('https://iosa-api.herokuapp.com/breeds/breeding', data,{
             headers:{
                 ContentType: 'Application/json',
                 Authorization: token
@@ -102,7 +102,7 @@ export const addPopulation = (numberOfNewborns,numberOfDeaths) => {
             numberOfDeaths
         }
 
-        axios.post('http://localhost:8080/breeds/population', data,{
+        axios.post('https://iosa-api.herokuapp.com/breeds/population', data,{
             headers:{
                 ContentType: 'Application/json',
                 Authorization: token
@@ -172,7 +172,7 @@ export const addBookKeeping = (
             stockMedication,
         }
 
-        axios.post('http://localhost:8080/breeds/book-keeping', data,{
+        axios.post('https://iosa-api.herokuapp.com/breeds/book-keeping', data,{
             headers:{
                 ContentType: 'Application/json',
                 Authorization: token

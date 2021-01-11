@@ -69,7 +69,7 @@ export const getPopulation = () => {
 
          const token = getState().auth.token
 
-         axios.get('http://localhost:8080/breeds/population',{
+         axios.get('https://iosa-api.herokuapp.com/breeds/population',{
             headers:{
                 ContentType: 'Application/json',
                 Authorization: token
@@ -112,7 +112,7 @@ export const getBookKeeping = () => {
 
          const token = getState().auth.token
 
-         axios.get('http://localhost:8080/breeds/book-keeping',{
+         axios.get('https://iosa-api.herokuapp.com/breeds/book-keeping',{
             headers:{
                 ContentType: 'Application/json',
                 Authorization: token
