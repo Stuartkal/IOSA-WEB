@@ -47,8 +47,8 @@ const Home = (props) => {
             
             if(diff){
                 store.addNotification({
-                    title: "Wonderful!",
-                    message: "teodosii@react-notifications-component",
+                    title: "Medication Reminder",
+                    message: "Today is breeding Day!",
                     type: "success",
                     insert: "top",
                     container: "top-right",
