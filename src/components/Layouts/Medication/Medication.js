@@ -68,7 +68,7 @@ const Medication = (props) => {
                         const scheduleddate =  new Date().setDate(breeding.breedingDate)
                         const diff = moment(new Date()) >= moment(scheduleddate)
 
-                        console.log(diff)
+                        // console.log(diff)
                         
                         if(diff){
                             store.addNotification({
