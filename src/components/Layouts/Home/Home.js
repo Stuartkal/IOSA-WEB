@@ -43,7 +43,7 @@ const Home = (props) => {
             const scheduleddate =  new Date().setDate(new Date().getDate())
             const diff = moment(new Date()) >= moment(scheduleddate)
 
-            console.log(diff)
+            // console.log(diff)
             
             if(diff){
                 store.addNotification({

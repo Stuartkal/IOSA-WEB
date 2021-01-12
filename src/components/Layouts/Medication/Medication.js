@@ -13,32 +13,8 @@ const Medication = (props) => {
     const breedings = useSelector(state => state.breeding.breedings)
     
     useEffect(()=>{
-
-        // console.log(breedings)
-        // breedings.map(breeding => {
-        //     const scheduleddate =  moment(breeding.breedingDate)
-        // const diff = moment(new Date()) >= moment(scheduleddate)
-
-        // console.log(diff)
         
-        // if(diff){
-        //     store.addNotification({
-        //         content: MyNotify,
-        //         type: "success",
-        //         insert: "top",
-        //         container: "top-right",
-        //         animationIn: ["animate__animated", "animate__fadeIn"],
-        //         animationOut: ["animate__animated", "animate__fadeOut"],
-        //         dismiss: {
-        //             duration: 2678400,
-        //             showIcon: true,
-        //             onScreen: true
-        //           }
-        //       })
-        // }
-        // })
-        
-    },[breedings])
+    },[])
 
     useEffect(() => {
         props.getBreeding()
@@ -61,14 +37,16 @@ const Medication = (props) => {
             <Navbar/>
             <ReactNotification/>
             <div className="medication-main">
-                    {breedings.map(breeding => {
+                    {breedings && breedings.map(breeding => {
                         console.log('database date',breeding.breedingDate)
                         console.log('todays date',moment(new Date()).format('DD-MM-YYYY'))
                         
-                        const scheduleddate =  new Date().setDate(breeding.breedingDate)
+                        const _breedingDate = breeding.breedingDate
+
+                        const scheduleddate =  moment(new Date().setDate(_breedingDate)).format('DD-MM-YYYY')
                         const diff = moment(new Date()) >= moment(scheduleddate)
 
-                        // console.log(diff)
+                        console.log(diff)
                         
                         if(diff){
                             store.addNotification({

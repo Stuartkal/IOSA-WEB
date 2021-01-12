@@ -64,3 +64,26 @@
 .auth-container button:focus {
 	background: #042718;
 }
+
+@media screen and (max-width: 768px) {
+	.main-container {
+		margin: 5rem auto;
+		flex-direction: column;
+		height: 70vh;
+		img {
+			width: 70%;
+			height: 30vh;
+		}
+	}
+	.auth-container {
+		width: 80%;
+		input {
+			width: 100%;
+		}
+
+		button {
+			width: 100%;
+			margin-top: 0.5rem;
+		}
+	}
+}

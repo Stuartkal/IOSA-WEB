@@ -71,3 +71,14 @@
 		text-align: center;
 	}
 }
+
+@media screen and (max-width: 768px) {
+	.records-main {
+		width: 95%;
+	}
+	.btn-container {
+		button {
+			width: 100%;
+		}
+	}
+}

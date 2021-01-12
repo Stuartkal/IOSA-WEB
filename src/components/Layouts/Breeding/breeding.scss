@@ -52,3 +52,11 @@
 .breeding-main button:focus {
 	background: #042718;
 }
+
+@media screen and (max-width: 768px) {
+	.breeding-main {
+		button {
+			width: 50%;
+		}
+	}
+}
