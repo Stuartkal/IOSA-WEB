@@ -6,6 +6,7 @@ const intitialState = {
     breedings:[],
     population:[],
     bookkeeping:[],
+    medication:[],
     loading: false,
     error: false
 }
@@ -56,6 +57,12 @@ const get = (state = intitialState, action) => {
             return updateObject(state, {
                 loading: false,
                 error: true
+            })
+            //Get Medication
+            case actionTypes.GET_MEDICATION_ACTION:
+            return updateObject(state, {
+                medication: action.medicate,
+                loading: false,
             })
         default: return state
     }

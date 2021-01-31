@@ -1,16 +1,19 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import Navbar from '../../Routes/Navbar'
-import {connect, useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import * as actionTypes from '../../Store/ActionCreators'
 
 import './record.scss'
-const BreedingRecords = (props) => {
+const BreedingRecords = () => {
 
-    const breedings = useSelector(state => state.breeding.breedings)
+    const breedings = useSelector(state => state.breeding.breedings) 
+    
+    const dispatch = useDispatch()
 
     useEffect(()=> {
-        props.getBreeding()
-    },[])
+     dispatch(actionTypes.getBreeding())  
+    },[dispatch])
+
 
     console.log(breedings)
 
@@ -34,6 +37,9 @@ const BreedingRecords = (props) => {
         <div>
             <Navbar/>
             <div className="table-container">
+                <div className="header-title">  
+                    <h2>Breeding Records</h2>
+                </div>
                 <table>
                     <tbody>
                         <tr className="header-row" key={tableHeaders.id}>
@@ -55,19 +61,23 @@ const BreedingRecords = (props) => {
                                     <td>{breeding.numberDead}</td>
                                     <td>{breeding.weaningDate}</td>
                                     <td>{breeding.nextBreedingDate}</td>
+                                    <td>
+                                        <button onClick={() => dispatch(actionTypes.deleteBreeding(breeding._id))}>Delete Record</button>
+                                    </td>
                                 </tr>
                             )
                         })
                         }
                     </tbody>
                 </table>
+                <div className="phone-notify">
+                <h4>Please Login from a personal computer to access farming records</h4>
+                </div>
             </div>
         </div>
     )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    getBreeding: () => dispatch(actionTypes.getBreeding()),
-})
 
-export default connect(null, mapDispatchToProps) (BreedingRecords)
+
+export default BreedingRecords

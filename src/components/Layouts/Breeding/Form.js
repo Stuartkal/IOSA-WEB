@@ -13,7 +13,8 @@ const Form = ({
     numberAlive, 
     numberDead,
     onChange,
-    addBreed
+    addBreed,
+    error
 }) => {
 
     const kindlingBox = new Date(breedingDate).setDate(new Date(breedingDate).getDate()+ 25)
@@ -95,6 +96,7 @@ const Form = ({
                     </div>
                 </div>
                 <button>Add Record</button>
+                {!error ? <p>All fields are Required <strong style={{color:'red'}}>*</strong></p> : <p style={{color:'#d45821'}}>{error}</p>}
             </form>
         </div>
     )

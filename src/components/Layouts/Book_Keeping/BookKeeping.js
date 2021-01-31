@@ -19,7 +19,8 @@ const BookKeeping = (props) => {
             foodSales:'',
             stockFood:'',
             stockAnimals:'',
-            stockMedication:''
+            stockMedication:'',
+            error:''
     })
 
 
@@ -37,7 +38,29 @@ const BookKeeping = (props) => {
             state.foodSales,
             state.stockFood,
             state.stockAnimals,
-            state.stockMedication
+            state.stockMedication,
+            (res) => {
+                if(res.success === true){
+                    setState({ 
+                        food:'',
+                        medication:'',
+                        salaries:'',
+                        allowances:'',
+                        miscellaneous:'',
+                        animalsBought:'', 
+                        rabbitSales:'',
+                        farmVisits:'', 
+                        foodSales:'',
+                        stockFood:'',
+                        stockAnimals:'',
+                        stockMedication:'',
+                        error: 'Record Added!'
+                    })
+                }
+                if(res.success === false){
+                    setState({ error: 'Invalid Input, Please enter all fields'})
+                }
+            }
         )
     }
 
@@ -57,6 +80,7 @@ const BookKeeping = (props) => {
                 stockFood = {state.stockFood}
                 stockAnimals = {state.stockAnimals}
                 stockMedication = {state.stockMedication}
+                error={state.error}
                 onChange={(field, value) => setState({...state, [field]: value})}
                 addBookkeeping={addBookKeepingHandler}
             />
@@ -78,6 +102,7 @@ const mapDispatchToProps = dispatch => ({
             stockFood,
             stockAnimals,
             stockMedication,
+            callback
     ) => dispatch(actionCreators.addBookKeeping(
             food,
             medication,
@@ -91,6 +116,7 @@ const mapDispatchToProps = dispatch => ({
             stockFood,
             stockAnimals,
             stockMedication,
+            callback
     ))
 })
 

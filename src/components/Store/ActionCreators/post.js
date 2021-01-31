@@ -32,7 +32,7 @@ export const addBreed = (
     kindlingDate,
     numberAlive,
     numberDead,
-    
+    callback
 ) => {
     return (dispatch, getState) => {
         dispatch(addBreedAction())
@@ -64,10 +64,12 @@ export const addBreed = (
             }
         })
         .then(res => {
-            console.log(res)
+            // console.log(res)
+            callback({success: true, res})
         })
         .catch(error=> {
-            console.log(error)
+            callback({success: false, res: error})
+            // console.log(error)
         })
     }
 }
@@ -91,15 +93,21 @@ export const populationFail = () => {
     }
 }
 
-export const addPopulation = (numberOfNewborns,numberOfDeaths) => {
+// Population
+export const addPopulation = (year,month,recordDate,numberOfFemales,numberOfMales,numberOfNewborns,numberOfDeathsInMonth,callback) => {
     return (dispatch,getState) => {
         dispatch(populationAction())
         
         const token = getState().auth.token
 
         const data = {
+            year,
+            month,
+            recordDate,
+            numberOfFemales,
+            numberOfMales,
             numberOfNewborns,
-            numberOfDeaths
+            numberOfDeathsInMonth
         }
 
         axios.post('https://iosa-api.herokuapp.com/breeds/population', data,{
@@ -109,10 +117,64 @@ export const addPopulation = (numberOfNewborns,numberOfDeaths) => {
             }
         })
         .then(res => {
-            console.log(res)
+            callback({success: true, res})
+            // console.log(res)
         })
         .catch(error=> {
-            console.log(error)
+            // console.log(error)
+            callback({success: false, res: error})
+        })
+
+    }
+}
+
+//Medication
+export const medicationAction = () => {
+    return {
+        type: actionTypes.ADD_POPULATION_ACTION
+    }
+}
+
+export const medicationSuccess = () => {
+    return {
+        type: actionTypes.ADD_POPULATION_SUCCESS
+    }
+}
+
+export const medicationFail = () => {
+    return {
+        type: actionTypes.ADD_POPULATION_FAIL
+    }
+}
+
+export const addMedication = (_medication,medicationDate,cageNumber,gender,medicationType,remarks,callback) => {
+    return (dispatch,getState) => {
+        dispatch(medicationAction())
+        
+        const token = getState().auth.token
+
+        const data = {
+            _medication:_medication,
+            medicationDate:medicationDate,
+            cageNumber:cageNumber,
+            gender:gender,
+            medicationType:medicationType,
+            remarks:remarks
+        }
+
+        axios.post('https://iosa-api.herokuapp.com/breeds/medication', data,{
+            headers:{
+                ContentType: 'Application/json',
+                Authorization: token
+            }
+        })
+        .then(res => {
+            callback({success: true, res})
+            // console.log(res)
+        })
+        .catch(error=> {
+            // console.log(error)
+            callback({success: false, res: error})
         })
 
     }
@@ -151,6 +213,7 @@ export const addBookKeeping = (
             stockFood,
             stockAnimals,
             stockMedication,
+            callback
 ) => {
     return (dispatch,getState) => {
         dispatch(bookKeepingAction())
@@ -179,10 +242,12 @@ export const addBookKeeping = (
             }
         })
         .then(res => {
-            console.log(res)
+            // console.log(res)
+            callback({success: true, res})
         })
         .catch(error=> {
-            console.log(error)
+            callback({success: false, res: error})
+            // console.log(error)
         })
 
     }

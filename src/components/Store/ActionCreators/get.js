@@ -76,7 +76,7 @@ export const getPopulation = () => {
             }
          })
          .then(res => {
-            console.log(res)
+            // console.log(res)
             dispatch(getPopulationSuccess(res.data.population))
          })
          .catch(err => {
@@ -119,8 +119,36 @@ export const getBookKeeping = () => {
             }
          })
          .then(res => {
-            console.log(res)
+            // console.log(res)
             dispatch(getBookKeepingSuccess(res.data.bookkeeping))
+         })
+         .catch(err => {
+            console.log(err)
+         })
+    }
+}
+
+export const getMedicationAction = (medicate) => {
+    return {
+        type: actionTypes.GET_MEDICATION_ACTION,
+        medicate
+    }
+}
+
+export const medication = () => {
+    return (dispatch, getState) => {
+
+        const token = getState().auth.token
+
+        axios.get('https://iosa-api.herokuapp.com/breeds/medication',{
+            headers:{
+                ContentType: 'Application/json',
+                Authorization: token
+            }
+         })
+         .then(res => {
+            console.log(res)
+            dispatch(getMedicationAction(res.data.medication))
          })
          .catch(err => {
             console.log(err)

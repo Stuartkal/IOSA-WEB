@@ -16,6 +16,10 @@ const Records = (props) => {
         props.history.push('/bookkeeping-records')
     }
 
+    const  medicationClickHandler = () => {
+        props.history.push('/medication-records')
+    }
+
     return (
         <div>
             <Navbar/>
@@ -24,6 +28,7 @@ const Records = (props) => {
                     <button onClick={breedingClickHandler}>Breeding Records</button>
                     <button onClick={bookkeepingClickHandler}>Book Keeping Records</button>
                     <button onClick={populationClickHandler}>Population Record Records</button>
+                    <button onClick={medicationClickHandler}>Medication Records</button>
                 </div>
             </div>
         </div>

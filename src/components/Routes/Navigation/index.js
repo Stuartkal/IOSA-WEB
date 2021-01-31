@@ -10,6 +10,8 @@ import BreedingRecord from '../../Layouts/Records/BreedingRecords'
 import PopulationRecords from '../../Layouts/Records/PopulationRecords'
 import BookkeepingRecords from '../../Layouts/Records/BookkeepingRecords'
 import Medication from '../../Layouts/Medication/Medication'
+import MedicationRecords from '../../Layouts/Records/MedicationRecords'
+import StockManagement from '../../Layouts/Stock Management/StockManagement'
 
 const index = () => {
     return (
@@ -25,6 +27,8 @@ const index = () => {
                 <Route path="/population-records" component={PopulationRecords}/>
                 <Route path="/bookkeeping-records" component={BookkeepingRecords}/>
                 <Route path="/medication" component={Medication}/>
+                <Route path="/medication-records" component={MedicationRecords}/>
+                <Route path="/stock-management" component={StockManagement}/>
             </Switch>
         </BrowserRouter>
     )

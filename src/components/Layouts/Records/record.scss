@@ -34,12 +34,18 @@
 }
 
 .table-container {
-	margin: 150px auto;
+	margin: 100px auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
 	width: 95%;
+	padding: 5px;
+	border-radius: 4px;
+	box-sizing: border-box;
+	background: #fff;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+	// border: 1px solid rgba(0, 0, 0, 0.1);
 
 	table {
 		width: 100%;
@@ -47,21 +53,29 @@
 	}
 }
 
+.header-title {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+	width: 98%;
+}
+
 .header-row {
 	height: 30px;
 	align-items: center;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
+	// border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	background-color:#e05822;
 	td {
 		text-align: center;
+		color: #fff;
 	}
 }
 
 .table-record-row {
-	// height: 30px;
+	height: 35px;
 	align-items: center;
 	margin-bottom: 0.2rem;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	// border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	&:hover {
 		background-color: rgba(0, 0, 0, 0.1);
 	}
@@ -69,7 +83,28 @@
 	td {
 		font-size: 14px;
 		text-align: center;
+		border: 1px solid rgba(0, 0, 0, 0.1);
 	}
+
+	button {
+		border: 1px solid #e05822;
+		outline: none;
+		background: none;
+		color: #e05822;
+		height:25px;
+		transition: 0.5s ease-in-out;
+		font-size: 12px;
+	}
+}
+
+.table-record-row button:focus{
+	cursor: pointer;
+	background-color: #e05822;
+	color: #fff;
+}
+
+.phone-notify {
+	display: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -80,5 +115,17 @@
 		button {
 			width: 100%;
 		}
+	}
+	.table-container {
+
+		table{
+			display: none;
+		}
+	}
+	.phone-notify {
+		align-items: center;
+		text-align: center;
+		display: flex;
+		color: #01482a;
 	}
 }

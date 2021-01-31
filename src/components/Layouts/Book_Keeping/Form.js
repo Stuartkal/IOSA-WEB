@@ -13,6 +13,7 @@ const Form = ({
             stockFood,
             stockAnimals,
             stockMedication,
+            error,
             onChange,
             addBookkeeping
 }) => {
@@ -54,7 +55,7 @@ const Form = ({
                 <h3>Sales</h3>
                 <div className="book-row">
                     <div className="book-form">
-                        <h5>Rabbit Sales <strong style={{color:'red'}}>*</strong></h5>
+                        <h5>Rabbit Sold <strong style={{color:'red'}}>*</strong></h5>
                         <input type="text" value={rabbitSales} onChange={({target: {value}})=> onChange('rabbitSales', value)} />
                     </div>
                     <div className="book-form">
@@ -64,7 +65,7 @@ const Form = ({
                 </div>
                 <div className="book-row">
                     <div className="book-form">
-                        <h5>Food Sales <strong style={{color:'red'}}>*</strong></h5>
+                        <h5>Food <strong style={{color:'red'}}>*</strong></h5>
                         <input type="text" value={foodSales} onChange={({target: {value}})=> onChange('foodSales', value)} />
                     </div>
                 </div>
@@ -86,6 +87,7 @@ const Form = ({
                     </div>
                 </div>
                 <button>Add Record</button>
+                {!error ? <p>All fields are Required <strong style={{color:'red'}}>*</strong></p> : <p style={{color:'#d45821'}}>{error}</p>}
             </form>
         </div>
     )

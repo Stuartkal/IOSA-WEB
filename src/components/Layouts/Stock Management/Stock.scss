@@ -1,0 +1,23 @@
+.stock-main {
+	margin: 100px auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    padding: 10px;
+}
+
+.stock-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 85%;
+}
+
+

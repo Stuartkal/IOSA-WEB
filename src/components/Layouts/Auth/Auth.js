@@ -26,7 +26,7 @@ const Auth = (props) => {
     }
 
     return (
-        <div >
+        <div className="main">
            <form onSubmit={handleLogin} className="main-container">
                 <img src={logo} alt="logo"/>
                  <div className="auth-container">

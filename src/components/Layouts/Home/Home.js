@@ -1,18 +1,25 @@
 import React,{useEffect} from 'react'
 import Navbar from '../../Routes/Navbar'
 import Card from './Card'
+import StatCard from './StatCard'
+import Notification from './Notification'
 import BreedingIcon from '../../../assets/images/breeding.png'
 import MedicationIcon from '../../../assets/images/medication.png'
 import BookKeepingIcon from '../../../assets/images/bookkeeping.png'
 import StockManagementIcon from '../../../assets/images/stock.png'
 import PopulationRecordIcon from '../../../assets/images/population.png'
-import ReactNotification from 'react-notifications-component'
-import {store} from 'react-notifications-component'
-import moment from 'moment'
-import 'react-notifications-component/dist/theme.css'
+
+import {useDispatch} from 'react-redux'
+import * as actionTypes from '../../Store/ActionCreators'
 
 import './home.scss'
 const Home = (props) => {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        
+    },[dispatch])
 
     const handleBreedingClick = () => {
         setTimeout(()=>{
@@ -38,61 +45,79 @@ const Home = (props) => {
         },1000)
     }
 
-    useEffect(()=>{
+    const handleStockManagementClick = () => {
+        setTimeout(() => {
+            props.history.push('/stock-management')
+        },1000)
+    }
 
-            const scheduleddate =  new Date().setDate(new Date().getDate())
-            const diff = moment(new Date()) >= moment(scheduleddate)
-
-            // console.log(diff)
-            
-            if(diff){
-                store.addNotification({
-                    title: "Medication Reminder",
-                    message: "Today is breeding Day!",
-                    type: "success",
-                    insert: "top",
-                    container: "top-right",
-                    animationIn: ["animate__animated", "animate__fadeIn"],
-                    animationOut: ["animate__animated", "animate__fadeOut"],
-                    dismiss: {
-                        duration: 2678400,
-                        showIcon: true,
-                        onScreen: true
-                    }
-                })
-            }
-    },[])
 
     return (
         <div>
             <Navbar/>
-            <ReactNotification/>
             <div className="home-main">
-                <div className="home-row">
-                    <Card
-                        title="Breeding"
-                        icon={BreedingIcon} 
-                        navigate={handleBreedingClick} 
-                    />
-                    <Card
-                        title="Medication"
-                        icon={MedicationIcon}
-                        navigate={handleMedicationClick} 
-                    />
-                    <Card
-                        title="Book Keeping"
-                        icon={BookKeepingIcon}
-                        navigate={handleBookClick}
-                    />
-                    <Card
-                        title="Stock Management"
-                        icon={StockManagementIcon}
-                    />
-                    <Card
-                        title="Population Record"
-                        icon={PopulationRecordIcon}
-                        navigate={handlePopulationClick} 
-                    />
+                <div className="home-container">
+                    <div className="main-column">
+                        <div className="home-row">
+                            <Card
+                                title="Breeding"
+                                icon={BreedingIcon} 
+                                navigate={handleBreedingClick} 
+                            />
+                            <Card
+                                title="Medication"
+                                icon={MedicationIcon}
+                                navigate={handleMedicationClick} 
+                            />
+                            <Card
+                                title="Book Keeping"
+                                icon={BookKeepingIcon}
+                                navigate={handleBookClick}
+                            />
+                            <Card
+                                title="Population Record"
+                                icon={PopulationRecordIcon}
+                                navigate={handlePopulationClick} 
+                            />
+                            <Card
+                                title="Stock Management"
+                                icon={StockManagementIcon}
+                                navigate={handleStockManagementClick}
+                            />
+                        </div>
+                        <div className="stats-row">
+                            <StatCard
+                                title="Total Rabbits on farm"
+                                figure="0"
+                            />
+                            <StatCard
+                                title="Total Deaths"
+                                figure="0"
+                            />
+                            <StatCard
+                                title="Total Rabbits sold"
+                                figure="0"
+                            />
+                            <StatCard
+                                title="Total Rabbit sales revenue"
+                                figure="0"
+                            />
+                            <StatCard
+                                title="Total Feeds Expenditure"
+                                figure="0"
+                            />
+                            <StatCard
+                                title="Total Medicine Expenditure"
+                                figure="0"
+                            />
+                        </div>
+                    </div>
+                    <div className="notification-column">
+                        <div className="notification-header">
+                            <h4>Notifications</h4>
+                        </div>
+                        <Notification/>
+                    </div>
                 </div>
             </div>
         </div>

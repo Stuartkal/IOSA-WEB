@@ -17,6 +17,7 @@ const Breeding = (props) => {
         kindlingDate:'',
         numberAlive:'',
         numberDead:'',
+        error:''
     })
 
     // console.log(state.kindlingDate)
@@ -35,6 +36,26 @@ const Breeding = (props) => {
             state.kindlingDate,
             state.numberAlive,
             state.numberDead,
+            (res) => {
+                if(res.success === true){
+                    setState({ 
+                        breed:'',
+                        dateOfBirth:'',
+                        gender:'',
+                        parent:'',
+                        femaleCageNumber:'',
+                        maleCageNumber:'',
+                        breedingDate:'',
+                        kindlingDate:'',
+                        numberAlive:'',
+                        numberDead:'',
+                        error: 'Record Added!'
+                    })
+                }
+                if(res.success === false){
+                    setState({ error: 'Invalid Input, Please enter all fields'})
+                }
+            }
         )
     }
 
@@ -53,6 +74,7 @@ const Breeding = (props) => {
                 kindlingDate={state.kindlingDate}
                 numberAlive={state.numberAlive}
                 numberDead={state.numberDead}
+                error= {state.error}
                 onChange={(field, value) => setState({...state, [field]: value})}
                 addBreed={addBreedHandler}
             />
@@ -72,6 +94,7 @@ const Breeding = (props) => {
             kindlingDate,
             numberAlive,
             numberDead,
+            callback
             ) => dispatch(actionCreators.addBreed(
                 breed,
                 dateOfBirth,
@@ -83,6 +106,7 @@ const Breeding = (props) => {
                 kindlingDate,
                 numberAlive,
                 numberDead,
+                callback
                 ))
     })
 

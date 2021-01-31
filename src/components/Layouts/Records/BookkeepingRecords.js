@@ -1,18 +1,21 @@
 import React,{useEffect} from 'react'
 import Navbar from '../../Routes/Navbar'
-import {connect, useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import * as actionTypes from '../../Store/ActionCreators'
 
 import './record.scss'
-const BookkeepingRecords = (props) => {
+import { act } from 'react-dom/test-utils'
+const BookkeepingRecords = () => {
 
     const bookkeeping = useSelector(state => state.breeding.bookkeeping)
 
-    useEffect(()=> {
-        props.getBookKeeping()
-    },[])
+    const dispatch = useDispatch()
 
-    console.log(bookkeeping)
+    useEffect(()=> {
+        dispatch(actionTypes.getBookKeeping())
+    },[dispatch])
+
+    // console.log(bookkeeping)
 
     const tableHeaders = [
         { label: 'Food', id: '1' },
@@ -21,7 +24,7 @@ const BookkeepingRecords = (props) => {
         { label: 'Allowances', id: '4' },
         { label: 'Miscellaneous', id: '5' },
         { label: 'Animals Bought', id: '6' },
-        { label: 'Rabbit Sales', id: '7' },
+        { label: 'Rabbit Sold', id: '7' },
         { label: 'Farm Visits', id: '8' },
         { label: 'Food Sales', id: '9' },
         { label: 'Stock Food', id: '10' },
@@ -33,6 +36,9 @@ const BookkeepingRecords = (props) => {
         <div>
             <Navbar/>
             <div className="table-container">
+                <div className="header-title">
+                    <h3>Book Keeping Records</h3>
+                </div>
                 <table>
                     <tbody>
                         <tr className="header-row" key={tableHeaders.id}>
@@ -53,19 +59,22 @@ const BookkeepingRecords = (props) => {
                                     <td>{book.stockFood}</td>
                                     <td>{book.stockAnimals}</td>
                                     <td>{book.stockMedication}</td>
+                                    <td>
+                                        <button onClick={() => dispatch(actionTypes.deleteBookkeeping(book._id))}>Delete Record</button>
+                                    </td>
                                 </tr>
                             )
                         })
                         }
                     </tbody>
                 </table>
+                <div className="phone-notify">
+                    <h4>Please Login from a personal computer to access farming records</h4>
+                </div>
             </div>
         </div>
     )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    getBookKeeping: () => dispatch(actionTypes.getBookKeeping())
-})
 
-export default connect(null, mapDispatchToProps) (BookkeepingRecords)
+export default BookkeepingRecords

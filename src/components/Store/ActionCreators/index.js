@@ -1,3 +1,5 @@
 export {login} from './auth'
-export {addBreed,addPopulation,addBookKeeping} from './post'
-export {getBreeding,getPopulation,getBookKeeping } from './get'
+export {addBreed,addPopulation,addBookKeeping,addMedication} from './post'
+export {getBreeding,getPopulation,getBookKeeping,medication} from './get'
+export {kindlingBox,weaningDate,nextBreedingDate} from './medication'
+export {deleteBreeding,deleteBookkeeping,deletePopulation,deleteMedication} from './delete'
