@@ -66,8 +66,18 @@
 
 @media screen and (max-width: 768px) {
 	.medication-main {
+		width: 90%;
 		button {
 			width: 50%;
 		}
+	}
+	.medication-form {
+		width: 100%;
+		// background-color: #01482a;
+	}
+
+	.medication-row{
+		width: 70%;
+		flex-direction: column;
 	}
 }
