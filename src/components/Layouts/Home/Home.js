@@ -1,4 +1,5 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Navbar from '../../Routes/Navbar'
 import Card from './Card'
 import StatCard from './StatCard'
@@ -8,66 +9,73 @@ import MedicationIcon from '../../../assets/images/medication.png'
 import BookKeepingIcon from '../../../assets/images/bookkeeping.png'
 import StockManagementIcon from '../../../assets/images/stock.png'
 import PopulationRecordIcon from '../../../assets/images/population.png'
+import * as actionCreators from '../../Store/ActionCreators'
 
-import {useDispatch} from 'react-redux'
-import * as actionTypes from '../../Store/ActionCreators'
 
 import './home.scss'
 const Home = (props) => {
 
+    const expenditure = useSelector(state => state.breeding.expenditure)
+    const grossRevenue = useSelector(state => state.breeding.grossRevenue)
+    const netRevenue = useSelector(state => state.breeding.netRevenue)
+
+    const _expenditure = expenditure.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    const _grossRevenue = grossRevenue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    const _netRevenue = netRevenue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
     const dispatch = useDispatch()
 
     useEffect(() => {
-        
-    },[dispatch])
+        dispatch(actionCreators.userRevenue())
+    }, [])
 
     const handleBreedingClick = () => {
-        setTimeout(()=>{
+        setTimeout(() => {
             props.history.push('/breeding')
-        },1000)
-    } 
+        }, 1000)
+    }
 
     const handlePopulationClick = () => {
-        setTimeout(()=>{
+        setTimeout(() => {
             props.history.push('/population-record')
-        },1000)
+        }, 1000)
     }
 
     const handleBookClick = () => {
-        setTimeout(()=>{
+        setTimeout(() => {
             props.history.push('/book-keeping')
-        },1000)
+        }, 1000)
     }
 
     const handleMedicationClick = () => {
-        setTimeout(()=>{
+        setTimeout(() => {
             props.history.push('/medication')
-        },1000)
+        }, 1000)
     }
 
     const handleStockManagementClick = () => {
         setTimeout(() => {
             props.history.push('/stock-management')
-        },1000)
+        }, 1000)
     }
 
 
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <div className="home-main">
                 <div className="home-container">
                     <div className="main-column">
                         <div className="home-row">
                             <Card
                                 title="Breeding"
-                                icon={BreedingIcon} 
-                                navigate={handleBreedingClick} 
+                                icon={BreedingIcon}
+                                navigate={handleBreedingClick}
                             />
                             <Card
                                 title="Medication"
                                 icon={MedicationIcon}
-                                navigate={handleMedicationClick} 
+                                navigate={handleMedicationClick}
                             />
                             <Card
                                 title="Book Keeping"
@@ -77,7 +85,7 @@ const Home = (props) => {
                             <Card
                                 title="Population Record"
                                 icon={PopulationRecordIcon}
-                                navigate={handlePopulationClick} 
+                                navigate={handlePopulationClick}
                             />
                             <Card
                                 title="Stock Management"
@@ -86,29 +94,29 @@ const Home = (props) => {
                             />
                         </div>
                         <div className="stats-row">
-                            <StatCard
-                                title="Total Rabbits on farm"
+                            {/* <StatCard
+                                title="Rabbits on farm"
                                 figure="0"
                             />
                             <StatCard
-                                title="Total Deaths"
+                                title="Deaths"
                                 figure="0"
                             />
                             <StatCard
-                                title="Total Rabbits sold"
+                                title="Rabbits sold"
                                 figure="0"
+                            /> */}
+                            <StatCard
+                                title="Gross revenue"
+                                figure={_grossRevenue}
                             />
                             <StatCard
-                                title="Total Rabbit sales revenue"
-                                figure="0"
+                                title="Net Revenue"
+                                figure={_netRevenue}
                             />
                             <StatCard
-                                title="Total Feeds Expenditure"
-                                figure="0"
-                            />
-                            <StatCard
-                                title="Total Medicine Expenditure"
-                                figure="0"
+                                title="Farm Expenditure"
+                                figure={_expenditure}
                             />
                         </div>
                     </div>
@@ -116,7 +124,7 @@ const Home = (props) => {
                         <div className="notification-header">
                             <h4>Notifications</h4>
                         </div>
-                        <Notification/>
+                        <Notification />
                     </div>
                 </div>
             </div>

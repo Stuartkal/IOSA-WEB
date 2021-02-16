@@ -11,12 +11,12 @@ import './Medication.scss'
 const Medication = () => {
 
     const [state, setState] = useState({
-        _medication:'',
+        _medication:'VAccination',
         medicationDate:'',
-        cageNumber:'',
-        gender:'',
-        medicationType:'',
-        remarks:'',
+        cageNumber:'1232123123',
+        gender:'male',
+        medicationType:'vaccination',
+        remarks:'something good about the dog',
         error:''
     })
 

@@ -36,9 +36,9 @@ export const addBreed = (
 ) => {
     return (dispatch, getState) => {
         dispatch(addBreedAction())
-        
-        const weaningDate = new Date(kindlingDate).setDate(new Date(kindlingDate).getDate()+ 30)
-        
+
+        const weaningDate = new Date(kindlingDate).setDate(new Date(kindlingDate).getDate() + 30)
+
 
         const token = getState().auth.token
         const data = {
@@ -49,28 +49,28 @@ export const addBreed = (
             femaleCageNumber,
             maleCageNumber,
             breedingDate: moment(breedingDate).format('DD-MM-YYYY'),
-            kindlingBox: moment(new Date(breedingDate).setDate(new Date(breedingDate).getDate()+ 25)).format('DD-MM-YYYY'),
+            kindlingBox: moment(new Date(breedingDate).setDate(new Date(breedingDate).getDate() + 25)).format('DD-MM-YYYY'),
             kindlingDate: moment(kindlingDate).format('DD-MM-YYYY'),
             numberAlive,
             numberDead,
-            weaningDate: moment(weaningDate).format('DD-MM-YYYY') ,
-            nextBreedingDate: moment(new Date(weaningDate).setDate(new Date(weaningDate).getDate()+ 7)).format('DD-MM-YYYY'),
+            weaningDate: moment(weaningDate).format('DD-MM-YYYY'),
+            nextBreedingDate: moment(new Date(weaningDate).setDate(new Date(weaningDate).getDate() + 7)).format('DD-MM-YYYY'),
         }
 
-        axios.post('https://iosa-api.herokuapp.com/breeds/breeding', data,{
-            headers:{
+        axios.post('https://iosa-api.herokuapp.com/breeds/breeding', data, {
+            headers: {
                 ContentType: 'Application/json',
                 Authorization: token
             }
         })
-        .then(res => {
-            // console.log(res)
-            callback({success: true, res})
-        })
-        .catch(error=> {
-            callback({success: false, res: error})
-            // console.log(error)
-        })
+            .then(res => {
+                // console.log(res)
+                callback({ success: true, res })
+            })
+            .catch(error => {
+                callback({ success: false, res: error })
+                // console.log(error)
+            })
     }
 }
 
@@ -94,10 +94,10 @@ export const populationFail = () => {
 }
 
 // Population
-export const addPopulation = (year,month,recordDate,numberOfFemales,numberOfMales,numberOfNewborns,numberOfDeathsInMonth,callback) => {
-    return (dispatch,getState) => {
+export const addPopulation = (year, month, recordDate, numberOfFemales, numberOfMales, numberOfNewborns, numberOfDeathsInMonth, callback) => {
+    return (dispatch, getState) => {
         dispatch(populationAction())
-        
+
         const token = getState().auth.token
 
         const data = {
@@ -110,20 +110,20 @@ export const addPopulation = (year,month,recordDate,numberOfFemales,numberOfMale
             numberOfDeathsInMonth
         }
 
-        axios.post('https://iosa-api.herokuapp.com/breeds/population', data,{
-            headers:{
+        axios.post('https://iosa-api.herokuapp.com/breeds/population', data, {
+            headers: {
                 ContentType: 'Application/json',
                 Authorization: token
             }
         })
-        .then(res => {
-            callback({success: true, res})
-            // console.log(res)
-        })
-        .catch(error=> {
-            // console.log(error)
-            callback({success: false, res: error})
-        })
+            .then(res => {
+                callback({ success: true, res })
+                // console.log(res)
+            })
+            .catch(error => {
+                // console.log(error)
+                callback({ success: false, res: error })
+            })
 
     }
 }
@@ -147,35 +147,35 @@ export const medicationFail = () => {
     }
 }
 
-export const addMedication = (_medication,medicationDate,cageNumber,gender,medicationType,remarks,callback) => {
-    return (dispatch,getState) => {
+export const addMedication = (_medication, medicationDate, cageNumber, gender, medicationType, remarks, callback) => {
+    return (dispatch, getState) => {
         dispatch(medicationAction())
-        
+
         const token = getState().auth.token
 
         const data = {
-            _medication:_medication,
-            medicationDate:medicationDate,
-            cageNumber:cageNumber,
-            gender:gender,
-            medicationType:medicationType,
-            remarks:remarks
+            _medication: _medication,
+            medicationDate: medicationDate,
+            cageNumber: cageNumber,
+            gender: gender,
+            medicationType: medicationType,
+            remarks: remarks
         }
 
-        axios.post('https://iosa-api.herokuapp.com/breeds/medication', data,{
-            headers:{
+        axios.post('https://iosa-api.herokuapp.com/breeds/medication', data, {
+            headers: {
                 ContentType: 'Application/json',
                 Authorization: token
             }
         })
-        .then(res => {
-            callback({success: true, res})
-            // console.log(res)
-        })
-        .catch(error=> {
-            // console.log(error)
-            callback({success: false, res: error})
-        })
+            .then(res => {
+                callback({ success: true, res })
+                // console.log(res)
+            })
+            .catch(error => {
+                // console.log(error)
+                callback({ success: false, res: error })
+            })
 
     }
 }
@@ -201,21 +201,21 @@ export const bookKeepingFail = () => {
 }
 
 export const addBookKeeping = (
-            food,
-            medication,
-            salaries,
-            allowances,
-            miscellaneous,
-            animalsBought, 
-            rabbitSales,
-            farmVisits, 
-            foodSales,
-            stockFood,
-            stockAnimals,
-            stockMedication,
-            callback
+    food,
+    medication,
+    salaries,
+    allowances,
+    miscellaneous,
+    animalsBought,
+    rabbitSales,
+    farmVisits,
+    foodSales,
+    stockFood,
+    stockAnimals,
+    stockMedication,
+    callback
 ) => {
-    return (dispatch,getState) => {
+    return (dispatch, getState) => {
         dispatch(bookKeepingAction())
 
         const token = getState().auth.token
@@ -226,29 +226,56 @@ export const addBookKeeping = (
             salaries,
             allowances,
             miscellaneous,
-            animalsBought, 
+            animalsBought,
             rabbitSales,
-            farmVisits, 
+            farmVisits,
             foodSales,
             stockFood,
             stockAnimals,
             stockMedication,
         }
 
-        axios.post('https://iosa-api.herokuapp.com/breeds/book-keeping', data,{
-            headers:{
+        axios.post('https://iosa-api.herokuapp.com/breeds/book-keeping', data, {
+            headers: {
                 ContentType: 'Application/json',
                 Authorization: token
             }
         })
-        .then(res => {
-            // console.log(res)
-            callback({success: true, res})
-        })
-        .catch(error=> {
-            callback({success: false, res: error})
-            // console.log(error)
-        })
+            .then(res => {
+                // console.log(res)
+                callback({ success: true, res })
+            })
+            .catch(error => {
+                callback({ success: false, res: error })
+                // console.log(error)
+            })
 
+    }
+}
+
+export const postRevenue = (expenditure, gross_revenue, net_revenue) => {
+    return (dispatch, getState) => {
+
+        const token = getState().auth.token
+        const userId = getState().auth.userId
+
+        const data = {
+            expenditure: expenditure,
+            gross_revenue: gross_revenue,
+            net_revenue: net_revenue
+        }
+
+        axios.post(`https://iosa-api.herokuapp.com/auth/revenue/${userId}`, data, {
+            headers: {
+                ContentType: 'Application/json',
+                Authorization: token
+            }
+        })
+            .then((res => {
+                // console.log(res)
+            }))
+            .catch(error => {
+                console.log(error)
+            })
     }
 }

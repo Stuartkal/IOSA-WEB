@@ -1,84 +1,117 @@
 .nav-main {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 100;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 50px;
-	background: #01482a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  background: #01482a;
 }
 
 .nav-container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
 }
 
 .logo {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
 
-	img {
-		width: 60px;
-		height: 50px;
-	}
+  img {
+    width: 60px;
+    height: 50px;
+  }
 
-	h4 {
-		color: #fff;
-	}
+  h4 {
+    color: #fff;
+  }
 }
 
 .profile {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30%;
 
-	h5 {
-		color: #fff;
-		margin-left: 1rem;
-	}
+  h5 {
+    color: #fff;
+    margin-left: 1rem;
+  }
+  h6 {
+    color: #fff;
+  }
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h6 {
+    color: #fff;
+  }
+
+  i {
+    font-size: 13px;
+    color: #fff;
+    margin-left: 0.2rem;
+  }
+}
+
+.logout:hover {
+  cursor: pointer;
 }
 
 .link {
-	text-decoration: none;
-	color: #fff;
-	font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
 }
 
 .link:hover {
-	color: #e05822;
+  color: #e05822;
 }
 
 @media screen and (max-width: 768px) {
-	.nav-container {
-		width: 100%;
-	}
+  .nav-container {
+    width: 100%;
+  }
 
-	.logo {
-		width: 100%;
-		img {
-			width: 50px;
-			height: 50px;
-		}
-	}
+  .logo {
+    width: 100%;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
 
-	.profile {
-		width: 100%;
-		justify-content: center;
-		h5 {
-			font-size: 9px;
-			margin-left: 2rem;
-		}
-	}
+  .profile {
+    width: 100%;
+    justify-content: center;
+    h5 {
+      font-size: 9px;
+      margin-left: 2rem;
+    }
+  }
 
-	.link {
-		font-size: 10px;
-	}
+  .logout {
+    h6 {
+      display: none;
+    }
+    i {
+      //   font-size: 10px;
+      margin-left: 1rem;
+    }
+  }
+
+  .link {
+    font-size: 10px;
+  }
 }

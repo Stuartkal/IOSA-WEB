@@ -4,7 +4,7 @@ const StatCard = (props) => {
     return (
         <div className="stat-card" onClick={props.navigate}>
             <h2>{props.title}</h2>
-            <h3>{props.figure}</h3>
+            <h3>{props.figure} Shs</h3>
         </div>
     )
 }
